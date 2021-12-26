@@ -1,5 +1,5 @@
 server:
-  port: 9999
+  port: 9000
 management:
   endpoints:
     web:
@@ -10,8 +10,10 @@ management:
       show-details: "ALWAYS"
 
 eureka:
+  instance:
+    hostname: localhost
   client:
     register-with-eureka: false
     fetch-registry: false
     serviceUrl:
-      defaultZone: http://localhost:9999/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
