@@ -1,5 +1,12 @@
+# =================================
+# SERVICE CONFIGURATION
+# =================================
 server:
   port: 9000
+
+# =======================================
+# Enables Spring Boot Actuator end points
+# =======================================
 management:
   endpoints:
     web:
@@ -9,6 +16,9 @@ management:
     health:
       show-details: "ALWAYS"
 
+# =======================================
+# Enables Eureka client 
+# =======================================
 eureka:
   instance:
     hostname: localhost
