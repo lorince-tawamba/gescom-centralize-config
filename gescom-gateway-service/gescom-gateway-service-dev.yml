@@ -1,5 +1,12 @@
+# =================================
+# SERVICE CONFIGURATION
+# =================================
 server:
-  port: 9999
+  port: 9000
+
+# =======================================
+# Enables Spring Boot Actuator end points
+# =======================================
 management:
   endpoints:
     web:
@@ -9,9 +16,19 @@ management:
     health:
       show-details: "ALWAYS"
 
+# =======================================
+# Enables Eureka client 
+# =======================================
 eureka:
+  instance:
+    hostname: localhost
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry: true
     serviceUrl:
-      defaultZone: http://localhost:9999/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+spring:
+  cloud:
+    discovery:
+      enabled: true
